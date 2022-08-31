@@ -1,0 +1,32 @@
+header,
+article {
+	padding: 0 12vw;
+}
+
+header > h1 {
+	padding-top: 3vh;
+	padding-left: 3vw;
+	margin-bottom: 4vh;
+	border-bottom: 1px #333 dotted;
+}
+
+article > h2 {
+	padding-left: 5vw;
+	margin-bottom: 2vh;
+}
+
+article > section {
+	padding: 0 5vw;
+	margin-bottom: 6vh;
+}
+
+/* For JavaScript */
+
+.sidemenu {
+	padding: 20px 5px;
+	right: 0;
+	position: fixed;
+	top: 50%;
+	transform: translate(0px, -50%);
+	background: #0099e3;
+}
