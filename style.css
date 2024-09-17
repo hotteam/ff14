@@ -1,6 +1,6 @@
 header,
 article {
-	padding: 0 12vw;
+	padding: 0 6vw;
 }
 
 header > h1 {
@@ -16,7 +16,7 @@ article > h2 {
 }
 
 article > section {
-	padding: 0 5vw;
+	padding: 0 3vw;
 	margin-bottom: 6vh;
 }
 

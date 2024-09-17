@@ -9,8 +9,14 @@
 			border-collapse: collapse;
 			border: 1px solid #ccc;
 			line-height: 1.5;
+			overflow-x: auto;
+			white-space: nowrap;
 		}
-		.table th {
+		.table td {
+			padding: 4px;
+			vertical-align: top;
+		}
+		thead th {
 			padding: 10px;
 			font-weight: bold;
 			vertical-align: top;
@@ -18,17 +24,28 @@
 			color: #ffffff;
 			position: sticky; /* https://csslayout.io/patterns/sticky-table-headers から */
 			top: 0;
-			z-index: 9999;
+			z-index: 1;
 		}
-		.table td {
-			padding: 10px;
-			vertical-align: top;
+		thead th:first-child {
+			left: 0;
+			z-index: 2;
 		}
-		.table tr:nth-child(even) {
+		tbody tr:nth-child(odd) {
 			background: #cee7ff;
+		}
+		tbody th {
+			background: #77c0fb;
+			color: #333;
+			position: sticky;
+			left: 0;
+			z-index: 1;
 		}
 		.fntxsml {
 			font-size: x-small;
+		}
+		.table_box::-webkit-scrollbar {
+			width: 10px; /* スクロールバーの幅 */
+			height: 10px; /* スクロールバーの高さ */
 		}
 	</style>
 	<title>FF14のversionコンテンツ対照表</title>
@@ -41,6 +58,7 @@
 	<article>
 		<section>
 			<table class="table">
+				<thead>
 				<tr>
 					<th>item</th>
 					<th>新生</th>
@@ -48,183 +66,208 @@
 					<th>紅蓮</th>
 					<th>漆黒</th>
 					<th>暁月</th>
+					<th>黄金</th>
 				</tr>
+			</thead>
+			<tbody>
 				<tr>
-					<td>エキルレ</td>
+					<th>エキルレ</th>
 					<td>3</td>
 					<td>2</td>
 					<td>1.5</td>
 					<td>1</td>
 					<td>1</td>
+					<td>1</td>
 				</tr>
 				<tr>
-					<td>8人レイド</td>
+					<th>8人レイド</th>
 					<td>なし</td>
 					<td>機工城アレキサンダー</td>
 					<td>次元の狭間オメガ</td>
 					<td>希望の園エデン</td>
 					<td>万魔殿パンデモニウム</td>
+					<td>至天の座アルカディア</td>
 				</tr>
 				<tr>
-					<td>8人レイド savage</td>
+					<th>8人レイド savage</th>
 					<td>大迷宮バハムート</td>
 					<td>機工城アレキサンダー 零式</td>
 					<td>次元の狭間オメガ 零式</td>
 					<td>希望の園エデン 零式</td>
 					<td>万魔殿パンデモニウム 零式</td>
+					<td>至天の座アルカディア 零式</td>
 				</tr>
 				<tr>
-					<td>蛮神/極蛮神<br><span class="fntxsml">難易度が2種以上あるもの</span></td>
+					<th>蛮神/極蛮神<br><span class="fntxsml">難易度が2種以上あるもの</span></th>
 					<td>エオルゼア五蛮族＆六属性<br>アルテマウェポン<br>白豚</td>
 					<td>三闘神シリーズ<br>ビスマルク<br>ラーヴァナ<br>ナイツ・オブ・ラウンド<br>ニーズヘッグ</td>
 					<td>四聖獣シリーズ<br>スサノオ<br>ラクシュミ<br>神竜<br>ツクヨミ<br>リオレウス</td>
 					<td>ウェポンシリーズ<br>ティターニア<br>イノセンス<br>ハーデス<br>ウォリアー・オブ・ライト</td>
 					<td>ゴルベーザ四天王<br>ゾディアーク<br>ハイデリン<br>終焉の戦い</td>
+					<td>？？？</td>
 				</tr>
 				<tr>
-					<td>極蛮神マウント</td>
+					<th>極蛮神マウント</th>
 					<td>麒麟<br><span class="fntxsml">馬シリーズ</span></td>
 					<td>鳳凰<br><span class="fntxsml">鳥シリーズ</span></td>
 					<td>九尾<br><span class="fntxsml">犬シリーズ</span></td>
 					<td>レンダーバッフェ<br><span class="fntxsml">竜シリーズ</span></td>
-					<td><span class="fntxsml">リンクスシリーズ</span></td>
+					<td>バハムート・アポクリファ<br><span class="fntxsml">リンクスシリーズ</span></td>
+					<td>？？？<br><span class="fntxsml">羽シリーズ</span></td>
 				</tr>
 				<tr>
-					<td>エクストラ蛮神他<br><span class="fntxsml">難易度が1種しかないもの</span></td>
+					<th>エクストラ蛮神他<br><span class="fntxsml">難易度が1種しかないもの</span></th>
 					<td>ドルムキマイラ<br>ハイドラ<br>おでん<br>ギルガメッシュ<br>アマジナ杯<br>真ギルガメッシュ<br>アシエンナプリアレス<br>皇都防衛戦</td>
 					<td></td>
 					<td>真ヨウジンボウ</td>
 					<td>極ボズヤ<br>幻シヴァ<br>幻タイタン<br>幻リヴァ</td>
-					<td>幻アルテマ<br>幻セフィロト<br>幻ソフィア</td>
+					<td>幻アルテマ<br>幻セフィロト<br>幻ソフィア<br>アスラ</td>
+					<td>？？？</td>
 				</tr>
 				<tr>
-					<td>24人レイド</td>
+					<th>24人レイド</th>
 					<td>クリスタルタワー</td>
 					<td>シャドウ・オブ・マハ</td>
 					<td>リターン・トゥ・イヴァリース</td>
 					<td>ヨルハ・ダークアポカリプス</td>
 					<td>エオルゼア神話</td>
+					<td>FF11コラボ</td>
 				</tr>
 				<tr>
-					<td>育成武器</td>
+					<th>育成武器</th>
 					<td>ゾディアック・ウェポン</td>
 					<td>アニマ・ウェポン</td>
 					<td>エウレカ・ウェポン</td>
 					<td>レジスタンス・ウェポン<br><span class="fntxsml">セイブ・ザ・クイーン</span></td>
 					<td>マンダヴィル・ウェポン</td>
+					<td>？？？</td>
 				</tr>
 				<tr>
-					<td>特殊コンテンツ<br><span class="fntxsml">常設化しなかったもの</span></td>
+					<th>特殊コンテンツ<br><span class="fntxsml">常設化しなかったもの</span></th>
 					<td>バハムート侵攻零式<br>同盟記章</td>
 					<td>伝承録</td>
 					<td>ドマ町人地</td>
 					<td>蒼天街<br>Fete<br>Gウォリアー</td>
-					<td></td>
+					<td>なし</td>
+					<td>？？？</td>
 				</tr>
 				<tr>
-					<td>地図</td>
+					<th>地図</th>
 					<td><span class="fntxsml">魔紋なし</span></td>
 					<td>アクアポリス</td>
 					<td>ウズネアカナル</td>
 					<td>リェー・ギア</td>
 					<td>エキサイトロン</td>
+					<td>セノーテ・ジャジャグラル</td>
 				</tr>
 				<tr>
-					<td>DD</td>
+					<th>DD</th>
 					<td><span class="fntxsml">なし</span></td>
 					<td>死者の宮殿</td>
 					<td>アメノミハシラ</td>
 					<td><span class="fntxsml">予算オーバーのため開発中止</span></td>
 					<td>オルト・エウレカ</td>
+					<td>？？？</td>
 				</tr>
 				<tr>
-					<td>箱庭</td>
+					<th>箱庭</th>
 					<td><span class="fntxsml">なし</span></td>
 					<td>ディアデム諸島<br><span class="fntxsml">後に転用</span></td>
 					<td>禁断の地エウレカ<br><span class="fntxsml">バルデシオン・アーセナル</span></td>
 					<td>シタデル・ボズヤ<br><span class="fntxsml">カストルム・ラクスリトレ攻城戦</span><br><span class="fntxsml">グンヒルド・ディルーブラム</span><br><span class="fntxsml">旗艦ダル・リアータ攻略戦</span></td>
 					<td>アナザーダンジョン</td>
+					<td>？？？</td>
 				</tr>
 				<tr>
-					<td>サブクエスト</td>
+					<th>サブクエスト</th>
 					<td>事件屋ヒルディブランド<br>レターモーグリ</td>
 					<td>事件屋・蒼天編<br>聖アンダリム神学院記<br>竜詩戦争番外編<br>ドマ冒険者団</td>
 					<td>事件屋・紅蓮編<br>ドマ町人地復興記</td>
 					<td>暁の帰還 番外編<br>イシュガルド復興<br>復興・スカイスチール<br>ヴォイド再生計画</td>
 					<td>帰ってきた事件屋<br>大繁盛商店<br>オメガ番外編<br>新たなる冒険番外編<br>モーエンツール</td>
+					<td>？？？</td>
 				</tr>
 				<tr>
-					<td>蛮族クエスト<br>戦闘</td>
+					<th>蛮族クエスト<br>戦闘</th>
 					<td>アマルジャ<br>シルフ<br>サハギン<br>コボルド</td>
 					<td>グナース<br>バヌバヌ</td>
 					<td>コウジン<br>アナンタ</td>
 					<td>ピクシー</td>
 					<td>アルカソーダラ</td>
+					<td>？？？</td>
 				</tr>
 				<tr>
-					<td>蛮族クエスト<br>ギャザクラ</td>
+					<th>蛮族クエスト<br>ギャザクラ</th>
 					<td>イクサル（採・製）</td>
 					<td>モーグリ（製）</td>
 					<td>ナマズオ（採・製）</td>
 					<td>キタリ（採）<br>ドワーフ（製）</td>
 					<td>オミクロン（採）<br>レポリット（製）</td>
+					<td>？？？</td>
 				</tr>
 				<tr>
-					<td>蛮族エクストラ</td>
+					<th>蛮族エクストラ</th>
 					<td>蛮族エクストラ</td>
 					<td>蛮族エクストラ蒼天編</td>
 					<td>蛮族エクストラ紅蓮編</td>
 					<td><span class="fntxsml">企画中断</span></td>
-					<td><span class="fntxsml">まだ不明</span></td>
+					<td>蛮族エクストラ暁月編</td>
 				</tr>
 				<tr>
-					<td>PvP<br><span class="fntxsml">詳しくないので適当</span></td>
+					<th>PvP<br><span class="fntxsml">詳しくないので適当</span></th>
 					<td>ウルヴズジェイル<br>フロントライン<br>FL殲滅戦</td>
 					<td>シールロック<br>ザ・フィースト<br>フィールド・オブ・グローリー<br>牙狼コラボ</td>
 					<td>ヒドゥンゴージ<br>アストラガロス</td>
 					<td>オンサル・ハカイル</td>
 					<td>クリスタルコンフリクト<br><span class="fntxsml">絡繰御殿</span></td>
+					<td>不明</td>
 				</tr>
 				<tr>
-					<td>絶</td>
+					<th>絶</th>
 					<td></td>
 					<td></td>
 					<td>絶バハムート<br>絶アルテマウェポン</td>
 					<td>絶アレキサンダー</td>
 					<td>絶竜詩戦争<br>絶オメガ</td>
+					<td>絶エデン（予定）</td>
 				</tr>
 				<tr>
-					<td>お得意様</td>
+					<th>お得意様</th>
 					<td><span class="fntxsml">なし</span></td>
 					<td>シロ・アリアポー</td>
 					<td>メ・ナーゴ<br>クレナイ<br>アドキラー</td>
 					<td>カイ・シル<br>エル・トゥ<br>デュランデル伯爵</td>
-					<td>アメリアンス<br>アンデン</td>
+					<td>アメリアンス<br>アンデン<br>マーグラット</td>
+					<td>？？？</td>
 				</tr>
 				<tr>
-					<td>初出後常設化</td>
-					<td>攻略手帳<br>モブハント<br>超える力<br>ハウジング<br>美容師<br>ミラプリ<br>分解<br>GS<br>リテイナーベンチャー<br>秘伝書<br>栽培<br>ヌシ釣り<br>探検手帳<br>バディ育成<br>エターナルバンド<br></td>
-					<td>フライングマウント<br>カンパニークラフト<br>マイスター<br>スクリップ<br>木人討滅戦<br>レイドファインダー<br>グループポーズ<br>トークン装備強化<br>冒険者小隊<br>クロの空想帳<br>アパルトメント</td>
-					<td>水中アクション<br>ミラージュドレッサー<br>チョコボかばん<br>サブマリンボイジャー<br>新式武器防具強化<br>コンテンツリプレイ<br>ファッションチェック<br>青魔道士<br>ワールド間テレポ<br>ドマ式麻雀</td>
-					<td>フェイス<br>つよニュー<br>バトルロールクエスト<br>バイカラージェム<br>ギャザクラカテゴリクエスト<br>製作練習<br>この素材から作れるものを確認<br>高難易度レシピ<br>オーシャンフィッシング<br>総合ショップ<br>ソーチョーの幻想盤<br>TTトーナメント<br>自由探索<br>稀物商</td>
-					<td>コンサポ<br>同行・追尾・尾行<br>幻想試着<br>アドベンチャラープレート<br>愛用の見聞録<br>論理DCトラベル<br>無人島開拓</td>
-				</tr>
-				<tr>
-					<td>特記事項</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td><span class="fntxsml">新生メイン改修(5.3)<br>新生フライング対応(5.3)<br>新生IDドロップ品修正(5.3)<br>フリートライアル大幅拡充(5.3)<br>収集品採集改修(5.4)<br>刻限採集改修(5.4)<br>PS5対応(5.5)<br>UIアセット高解像度対応(5.5)<br>ターゲットリング改修(5.5)<br>アチーブメント報酬獲得改修</span></td>
-					<td><span class="fntxsml">Immerse Spatial Audio対応<br>グラウンドターゲット変更<br>都市内転送網マップ化<br>テレポ上限額変更<br>ギャザHQ排出停止<br>帯装備廃止<br>刺突漁ミニゲーム化<br>アチーブメントUI変更<br>MeteorDC追加<br>アクションリストコンボ表示<br>リキャスト表示選択</span></td>
-				</tr>
-				<tr>
-					<td>ジョブ</td>
+					<th>ジョブ</th>
 					<td>ナイト<br>戦士<br>モンク<br>竜騎士<br>吟遊詩人<br>忍者<br>黒魔導士<br>召喚士<br>白魔道士<br>学者</td>
 					<td>暗黒騎士<br>機工士<br>占星術師</td>
 					<td>侍<br>赤魔導士</td>
 					<td>ガンブレイカー<br>踊り子</td>
 					<td>リーパー<br>賢者</td>
+					<td>ヴァイパー<br>ピクトマンサー</td>
 				</tr>
+				<tr>
+					<th>その他</th>
+					<td>攻略手帳<br>モブハント<br>超える力<br>ハウジング<br>美容師<br>ミラプリ<br>分解<br>ゴールドソーサー<br>リテイナーベンチャー<br>秘伝書<br>栽培<br>ヌシ釣り<br>探検手帳<br>バディ育成<br>エターナルバンド<br></td>
+					<td>アウラ<br>フライングマウント<br>カンパニークラフト<br>マイスター<br>スクリップ<br>木人討滅戦<br>レイドファインダー<br>グループポーズ<br>トークン装備強化<br>冒険者小隊<br>クロの空想帳<br>アパルトメント</td>
+					<td>水中アクション<br>ミラージュドレッサー<br>チョコボかばん<br>サブマリンボイジャー<br>新式武器防具強化<br>コンテンツリプレイ<br>ファッションチェック<br>青魔道士<br>ワールド間テレポ<br>ドマ式麻雀<br>NPC戦闘</td>
+					<td>ヴィエラ・ロスガル<br>フェイス<br>つよニュー<br>バトルロールクエスト<br>バイカラージェム<br>ギャザクラカテゴリクエスト<br>製作練習<br>この素材から作れるものを確認<br>高難易度レシピ<br>オーシャンフィッシング<br>総合ショップ<br>ソーチョーの幻想盤<br>だいじなもの<br>TTトーナメント<br>自由探索<br>稀物商</td>
+					<td>ヴィエラ（男）<br>コンサポ<br>同行・追尾・尾行<br>幻想試着<br>アドベンチャラープレート<br>ポートレート<br>愛用の見聞録<br>論理DCトラベル<br>無人島開拓</td>
+					<td>ロスガル（女）<br>Xbox<br>アクション置き換え<br>二箇所染色<br>ブラックリスト改修<br>ミュートリスト</td>
+				</tr>
+				<tr>
+					<th>特記事項</th>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><span class="fntxsml">新生メイン改修(5.3)<br>新生フライング対応(5.3)<br>新生IDドロップ品修正(5.3)<br>フリートライアル大幅拡充(5.3)<br>収集品採集改修(5.4)<br>刻限採集改修(5.4)<br>PS5対応(5.5)<br>UIアセット高解像度対応(5.5)<br>ターゲットリング改修(5.5)<br>アチーブメント報酬獲得改修</span></td>
+					<td><span class="fntxsml">Immerse Spatial Audio対応<br>グラウンドターゲット変更<br>都市内転送網マップ化<br>テレポ上限額変更<br>ギャザHQ排出停止<br>帯装備廃止<br>刺突漁ミニゲーム化<br>アチーブメントUI変更<br>MeteorDC追加<br>アクションリストコンボ表示<br>リキャスト表示選択</span></td>
+					<td><span class="fntxsml">グラフィックスアップデート<br>キャラ作成機能修正<br>幻想薬1時間化<br></span></td>
+				</tr>
+				</tbody>
 			</table>
 		</section>
 		<div class="sidemenu"><a href="#">↑TOP</a></div>
